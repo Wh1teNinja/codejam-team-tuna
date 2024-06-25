@@ -20,10 +20,12 @@ export const QuestionsPage = (): React.JSX.Element => {
   const [answer, setAnswer] = useState<string | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
   const [score, setScore] = useState(0);
+  const [correctAnswer, setCorrectAnswer] = useState<string | null>(null);
 
-  const { topic, difficulty } = state || {
+  const { topic, difficulty, roomId } = state || {
     topic: "random",
     difficulty: "0",
+    roomId: "0",
   };
 
   console.log(state);
@@ -31,7 +33,7 @@ export const QuestionsPage = (): React.JSX.Element => {
   useEffect(() => {
     fetch(
       config.env.server +
-        `/questions/${topic !== "random" ? topic : "0"}/${difficulty}`
+        `/questions/${topic !== "random" ? topic : "0"}/${difficulty}/0`
     )
       .then((res) => res.json())
       .then(({ id, questions }) => {
@@ -53,8 +55,9 @@ export const QuestionsPage = (): React.JSX.Element => {
         )}/${encodeURIComponent(answer as string)}`
     )
       .then((res) => res.json())
-      .then(({score, result}) => {
+      .then(({ score, answer: correctAnswer }) => {
         setScore(score);
+        setCorrectAnswer(correctAnswer);
       });
   };
 
@@ -63,6 +66,7 @@ export const QuestionsPage = (): React.JSX.Element => {
       setCurrentQuestion(currentQuestion + 1);
       setAnswer(null);
       setIsAnswered(false);
+      setCorrectAnswer(null);
     }
   };
 
@@ -75,20 +79,36 @@ export const QuestionsPage = (): React.JSX.Element => {
         totalQuestions={questions.length}
         setAnswer={setAnswer}
         currentQuestion={currentQuestion + 1}
+        answer={answer}
+        score={score}
+        correctAnswer={correctAnswer}
       />
       {!isAnswered ? (
-        <button disabled={!answer} onClick={onSubmitButtonClick}>
+        <button
+          className="submit-questions-button"
+          disabled={!answer}
+          onClick={onSubmitButtonClick}
+        >
           Submit
         </button>
       ) : currentQuestion + 1 === questions.length ? (
         <Link
+          className="submit-questions-button"
           to="/results"
-          state={{ roomId: id, score: score, maxScore: questions.length }}
+          state={{
+            roomId: id,
+            score: score,
+            maxScore: questions.length,
+            topic,
+            difficulty,
+          }}
         >
           Finish
         </Link>
       ) : (
-        <button onClick={onNextButtonClick}>Next</button>
+        <button className="submit-questions-button" onClick={onNextButtonClick}>
+          Next
+        </button>
       )}
     </div>
   );

@@ -1,0 +1,45 @@
+.results-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.results-page-buttons-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.funny-image {
+    margin: 15px;
+    width: 150px;
+}
+
+.results-page-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: margin 0.2s, height 0.2s, width 0.2s, font-size 0.2s;
+  padding: 15px 20px 20px 20px;
+  margin: 20px;
+  font-size: 2rem;
+  border: none;
+  background: #383585;
+  border-radius: 10px;
+  width: 200px;
+  height: 100px;
+  color: white;
+  cursor: pointer;
+}
+
+.results-page-button:hover {
+    width: 300px;
+    height: 100px;
+    margin: 0;
+    font-size: 2.3rem;
+    background: #383585;
+    cursor: pointer;
+}

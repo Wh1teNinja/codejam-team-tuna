@@ -1,46 +1,69 @@
 .quizComponent {
-  height: 70%;
-  width: 50%;
-  background-color: white;
-  border: 2px solid black;
+  width: 100%;
+  color: white
 }
 
 .questionContainer {
-  border: 2px solid black;
-  height: 30%;
   text-align: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
+
+  margin-bottom: 80px
 }
 
-.questionContainer p:nth-child(1) {
-  border: 2px solid black;
+.user-stats {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   font-size: 2rem;
-}
-.questionContainer p:nth-child(2) {
-  border: 2px solid black;
-  font-size: 3.5rem;
+  margin-bottom: 20px;
 }
 
-.optionsContainer {
-  border: 2px solid black;
-  height: 70%;
-  width: 50%;
-  margin: auto;
+.question {
+  font-size: 4rem;
+  font-weight: bold;
 }
 
 .optionContainer {
-  border: 2px solid black;
-  height: 25%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding-left: 10%;
-  padding-right: 20%;
+  margin: 20px;
+  padding: 30px;
+  cursor: pointer;
+  color: white;
+  background: #383585;
+  font-size: 2rem;
+  border-radius: 50px;
+  font-weight: bold;
 }
 
 .optionContainer input {
-  margin-left: auto;
+  display: none;
+}
+
+.optionContainer:hover  {
+  background: #403e92;
+}
+
+.option-selected {
+  background: white;
+  color: #383585;
+}
+
+.option-selected:hover {
+  background: white;
+  color: #383585;
+}
+
+.option-correct {
+  color: #383585 !important;
+  background: rgb(118, 199, 118) !important;
+}
+
+.option-incorrect {
+  color: #383585 !important;
+  background: rgb(219, 151, 151)  !important;
 }
