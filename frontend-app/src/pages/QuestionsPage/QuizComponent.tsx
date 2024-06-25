@@ -2,39 +2,42 @@ import React, { useEffect, useState } from "react";
 import "./QuizComponent.css";
 
 type QuestionData = {
-  questionData: any;
+  questionData: {
+    options: string[];
+    question: string;
+  };
   totalQuestions: Number;
+  currentQuestion: Number;
+  setAnswer: (answer: string) => void;
 };
 
 export const QuizComponent = ({
   questionData,
   totalQuestions,
+  currentQuestion,
+  setAnswer,
 }: QuestionData): React.JSX.Element => {
   console.log(questionData);
 
   return (
     <div className="quizComponent">
       <div className="questionContainer">
-        <p>{`Question ${0}/${totalQuestions}`}</p>
+        <p>{`Question ${currentQuestion}/${totalQuestions}`}</p>
         <p>{questionData?.question}</p>
       </div>
       <div className="optionsContainer">
-        <div className="optionContainer">
-          <label>Option 1</label>
-          <input type="radio" value="option1" />
-        </div>
-        <div className="optionContainer">
-          <label>Option 2</label>
-          <input type="radio" value="option2" />
-        </div>
-        <div className="optionContainer">
-          <label>Option 3</label>
-          <input type="radio" value="option3" />
-        </div>
-        <div className="optionContainer">
-          <label>Option 4</label>
-          <input type="radio" value="option4" />
-        </div>
+        {questionData.options.map((option) => (
+          <label className="optionContainer" htmlFor={option} key={option}>
+            <span>{option}</span>
+            <input
+              id={option}
+              name="option"
+              type="radio"
+              value={option}
+              onChange={(e) => setAnswer(e.target.value)}
+            />
+          </label>
+        ))}
       </div>
     </div>
   );

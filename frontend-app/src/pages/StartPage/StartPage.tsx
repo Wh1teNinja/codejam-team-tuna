@@ -22,8 +22,12 @@ export const StartPage = (): React.JSX.Element => {
           >
             <option value="random">Random</option>
             <option value="Astronomy">Astronomy</option>
-            <option value="Physics">Physics</option>
             <option value="Biology">Biology</option>
+            <option value="Chemistry">Chemistry</option>
+            <option value="History">History</option>
+            <option value="Literature">Literature</option>
+            <option value="Geography">Geography</option>
+            <option value="Computer Science">Computer Science</option>
           </select>
         </div>
         <div className="StartPage-dropdown-wrapper">
