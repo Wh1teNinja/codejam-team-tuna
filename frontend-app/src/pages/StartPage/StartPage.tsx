@@ -51,7 +51,7 @@ export const StartPage = (): React.JSX.Element => {
         state={{ topic, difficulty }}
         className="StartPage-button"
       >
-        Start Quiz
+        <span>Start Quiz</span>
       </Link>
     </main>
   );

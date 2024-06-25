@@ -48,22 +48,54 @@
 }
 
 .StartPage-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
     transition: margin 0.2s, height 0.2s, width 0.2s, font-size 0.2s;
-    padding: 20px;
+    padding: 15px 20px 20px 20px;
     margin: 10px 0;
-    font-size: 1.5rem;
+    font-size: 2rem;
     border: none;
     background: #383585;
     border-radius: 10px;
-    width: 150px;
+    width: 550px;
     height: 80px;
 }
 
 .StartPage-button:hover {
-    width: 200px;
+    width: 700px;
     height: 100px;
     margin: 0;
-    font-size: 1.7rem;
+    font-size: 2.3rem;
     background: #383585;
     cursor: pointer;
+}
+
+@media screen and (max-width: 1500px) {
+    .StartPage {
+        width: 70%;
+    }
+
+}
+
+@media screen and (max-width: 1024px) {
+    .StartPage-header {
+        font-size: 2rem;
+        margin: 10px;
+        text-align: center;
+    }
+
+    .StartPage-filters-sections {
+        flex-direction: column;
+        width: 100%;
+    
+        margin: 30px 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .StartPage {
+        width: 100%;
+    }
 }
