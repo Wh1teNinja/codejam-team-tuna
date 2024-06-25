@@ -6,11 +6,15 @@ import { QuestionsPage } from "./pages/QuestionsPage/QuestionsPage";
 
 const router = createBrowserRouter([
   { path: "/", element: <StartPage /> },
-  { path: "QuestionsPage", element: <QuestionsPage /> },
+  { path: "/questions", element: <QuestionsPage /> },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <div className="App">
+      <RouterProvider router={router} />
+    </div>
+  );
 }
 
 export default App;
