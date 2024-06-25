@@ -1,42 +1,13 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState }, { useEffect, useState } from "react";
 import "./QuestionsPage.css";
 import { QuizComponent } from "./QuizComponent";
+import config from "../../config/config.json";
+import { Loader } from "../../components/Loader";
+import { useLocation } from "react-router-dom";
 
 export const QuestionsPage = (): React.JSX.Element => {
-  const [questionsList, setQuestionsList] = useState([]);
-  const [totalQuestions, setTotalQuestions] = useState(0);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-
-  useEffect(() => {
-    try {
-      const fetchData = async () => {
-        const response = await fetch("https://opentdb.com/api.php?amount=10");
-        const data = await response.json();
-        console.log(data.results);
-
-        setQuestionsList(data?.results);
-      };
-
-      fetchData();
-    } catch (error) {
-      console.log(error);
-    } finally {
-      if (questionsList.length !== 0) {
-        setTotalQuestions(questionsList.length);
-        setCurrentQuestion(1);
-      }
-    }
-  }, []);
-
-  const onSubmitButtonClick = useCallback(() => {}, []);
-
-  return (
-    <div className="questionsPage">
-      <QuizComponent
-        questionData={questionsList[0]}
-        totalQuestions={totalQuestions}
-      />
-      <button onClick={onSubmitButtonClick}>Submit</button>
+    return <div>
+        <h1>Questions page!</h1>
     </div>
   );
 };
