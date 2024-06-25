@@ -11,6 +11,9 @@ type Question = {
 };
 
 export const QuestionsPage = (): React.JSX.Element => {
+  let yippie = new Audio("/yippee-tbh.mp3")
+  let huh = new Audio("/huh-cat-meme.mp3")
+
   const { state } = useLocation();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -58,6 +61,11 @@ export const QuestionsPage = (): React.JSX.Element => {
       .then(({ score, answer: correctAnswer }) => {
         setScore(score);
         setCorrectAnswer(correctAnswer);
+        if (correctAnswer === answer) {
+            yippie.play();
+        } else {
+            huh.play()
+        }
       });
   };
 
